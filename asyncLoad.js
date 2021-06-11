@@ -20,11 +20,11 @@ for (let i = 0; i < 100000; i++) {
 
 // 数组再分割成多个数组(二维数组)
 const splitRows = []
+const pageSize = 500
 const len = rows.length
-for (let i = 0; i < len; i = i + 500) {
-    let index2 = i + 500
-    if (index2 > len) index2 = len
-    splitRows.push(rows.slice(i, index2))
+for (let i = 0, j = pageSize; i < len; i += pageSize, j += pageSize) {
+    if (j > len) j = len
+    splitRows.push(rows.slice(i, j))
 }
 
 const tableNode = document.getElementById('table_container')
